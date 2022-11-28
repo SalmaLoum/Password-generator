@@ -1,7 +1,7 @@
 //Create varaibles for lower case, upper case, special case, numerical
 
-var charLength = 10;
-var userChoice = [];
+var numChars = [];
+var chosenPassword = [];
 var specialChars = [
   "!",
   '"',
@@ -126,9 +126,9 @@ generateBtn.addEventListener("click", writePassword);
 //Generate password based on prompts
 function generatePassword() {
   var password = "";
-  for (var i = 0; i < charLength; i++) {
-    var random = Math.floor(Math.random() * userChoice.length);
-    password = password + userChoice[random];
+  for (var i = 0; i < numChars; i++) {
+    var random = Math.floor(Math.random() * chosenPassword.length);
+    password = password + chosenPassword[random];
   }
   return password;
 }
@@ -136,12 +136,12 @@ function generatePassword() {
 //Function prompt asking user for number of characters, and holding in a variable, validating user's input.
 
 function getPrompts() {
-  userChoice = [];
-  charLength = parseInt(
+  chosenPassword = [];
+  numChars = parseInt(
     prompt("Please chose a number between 8-128 for your password's characters")
   );
 
-  if (isNaN(charLength) || charLength < 8 || charLength > 128) {
+  if (isNaN(numChars) || numChars < 8 || numChars > 128) {
     alert("Before continuing, please input a number between 8 - 128.");
     return false;
   }
@@ -167,23 +167,23 @@ function getPrompts() {
     return false;
   }
   if (confirmSpecial) {
-    userChoicePush(specialChars);
+    chosenPasswordPush(specialChars);
   }
   if (confirmNum) {
-    userChoicePush(numericalNums);
+    chosenPasswordPush(numericalNums);
   }
   if (confirmUpper) {
-    userChoicePush(upperLetters);
+    chosenPasswordPush(upperLetters);
   }
   if (confirmLower) {
-    userChoicePush(lowerLetters);
+    chosenPasswordPush(lowerLetters);
   }
   return true;
 }
 
-//Pushing the randomly generated characters into userChoicePush array.
-function userChoicePush(array) {
+//Pushing the randomly generated characters into chosenPassword Push array.
+function chosenPasswordPush(array) {
   for (var i = 0; i < array.length; i++) {
-    userChoice.push(array[i]);
+    chosenPassword.push(array[i]);
   }
 }
