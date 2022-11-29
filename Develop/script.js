@@ -1,7 +1,4 @@
-//Create varaibles for lower case, upper case, special case, numerical
-
-var numChars = [];
-var chosenPassword = [];
+//Create varaibles for lower case, upper case, special case, and numerical characters
 var specialChars = [
   "!",
   '"',
@@ -94,11 +91,9 @@ var lowerLetters = [
   "z",
 ];
 
-//These are the variables that will be used later when calling out.
-var confirmSpecial;
-var confirmNum;
-var confirmUpper;
-var confirmLower;
+var numChars = [];
+var chosenPassword = "";
+//Variables that will be used later when calling out.
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
@@ -109,81 +104,25 @@ function generatePassword() {
 
 // Write password to the #password input
 function writePassword() {
-  var correctPrompts = getPrompts();
+  var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
-  if (correctPrompts) {
-    var Password = generatePassword();
-    passwordText.value = Password;
-  } else {
-    passwordText.value = "";
-  }
+  passwordText.value = password;
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-//Generate password based on prompts
+//Function to generate random password.
 function generatePassword() {
   var password = "";
   for (var i = 0; i < numChars; i++) {
     var random = Math.floor(Math.random() * chosenPassword.length);
-    password = password + chosenPassword[random];
   }
   return password;
 }
 
-//Function prompt asking user for number of characters, and holding in a variable, validating user's input.
-
-function getPrompts() {
-  chosenPassword = [];
-  numChars = parseInt(
-    prompt("Please chose a number between 8-128 for your password's characters")
-  );
-
-  if (isNaN(numChars) || numChars < 8 || numChars > 128) {
-    alert("Before continuing, please input a number between 8 - 128.");
-    return false;
-  }
-
-  //checks the user's input and cofirm they put in a number between 8 and 128, and that it is numeric.
-  // Variables for character selections.
-  else {
-    confirmSpecial = confirm(
-      "Would you like the password to contain Special Characters?"
-    );
-    confirmNum = confirm("Would you like the password to contain Numbers?");
-    confirmUpper = confirm(
-      "Would you like the password to contain Uppercase Letters?"
-    );
-    confirmLower = confirm(
-      "Would you like the password to contain Lowercase Letters?"
-    );
-  }
-
-  //Checks if no options for the password was chosen.
-  if (!confirmSpecial && !confirmNum && !confirmUpper && !confirmLower) {
-    alert("There were no selected options.");
-    return false;
-  }
-  if (confirmSpecial) {
-    chosenPasswordPush(specialChars);
-  }
-  if (confirmNum) {
-    chosenPasswordPush(numericalNums);
-  }
-  if (confirmUpper) {
-    chosenPasswordPush(upperLetters);
-  }
-  if (confirmLower) {
-    chosenPasswordPush(lowerLetters);
-  }
-  return true;
-}
-
+//Generate password based on prompts
+//checks the user's input and cofirm they put in a number between 8 and 128, and that it is numeric.
+//Checks if no options for the password was chosen.
 //Pushing the randomly generated characters into chosenPassword Push array.
-function chosenPasswordPush(array) {
-  for (var i = 0; i < array.length; i++) {
-    chosenPassword.push(array[i]);
-  }
-}
