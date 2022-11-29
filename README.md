@@ -21,7 +21,7 @@ Go to [Password generator app](https://salmaloum.github.io/password-generator/) 
 
 Click on the "Generate Password" button to get through the prompts as shown below:
 
-![Password generator application](Assets/images/03-javascript-homework-demo.png)
+![Password generator application](Assets/images/app-demo.gif)
 
 - [Salma Loum](https://github.com/SalmaLoum)
 - [UCLA Extension Bootcamp](https://www.uclaextension.edu/?gclid=Cj0KCQiAgribBhDkARIsAASA5btdbwAz8x25r3b1deoRNIGxfkPFL11rAQMuCgQ7HYiqBH8CLr9CgLoaAktlEALw_wcB&gclsrc=aw.ds)
